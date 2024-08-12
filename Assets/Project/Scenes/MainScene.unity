@@ -254,9 +254,17 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5d1157e4-12ba-43db-8092-763f8ce1a434
     m_ActionName: Main/Action[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 56d5e4f3-9716-4a7e-ab62-2a038d2ece7e
+    m_ActionName: Player/Look
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62d611b8-a98f-4f15-9c32-3574cb6fa8fa
+    m_ActionName: Player/Jump
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Main
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 330585545}
 --- !u!114 &22927455
@@ -273,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerBlackboard: {fileID: 11400000, guid: 11f2689cf063a9e42abd7e7ed520774c, type: 2}
   _playerRigidbody: {fileID: 22927451}
+  _characterController: {fileID: 0}
 --- !u!1 &105927704
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
