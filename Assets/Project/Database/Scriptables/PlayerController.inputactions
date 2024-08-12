@@ -72,7 +72,7 @@
                 {
                     "name": "left",
                     "id": "3c2dbfe9-c794-42c8-b5cc-ea212691ab0d",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -94,7 +94,7 @@
                 {
                     "name": "forward",
                     "id": "befe103b-fa13-4d38-8b43-0299053185fd",
-                    "path": "<Keyboard>/z",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
