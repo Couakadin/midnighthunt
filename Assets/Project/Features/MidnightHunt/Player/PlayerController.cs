@@ -36,8 +36,8 @@ namespace Midnighthunt.Runtime
             _playerRigidbody.velocity = velocity * _playerSpeed;
             _playerRigidbody.velocity = new Vector3(_playerRigidbody.velocity.x, 0f, _playerRigidbody.velocity.z);
 
-            Transform lanternTransform = _lantern.transform;
-            lanternTransform.rotation = Quaternion.Euler(_playerRigidbody.velocity);
+            Transform modelTransform = _model.transform;
+            modelTransform.localRotation = modelTransform.parent.rotation;
         }
 
         private void OnEnable() => _inputController.Enable();
@@ -71,6 +71,8 @@ namespace Midnighthunt.Runtime
         private CharacterController _characterController;
         [SerializeField]
         private Light _lantern;
+        [SerializeField]
+        private GameObject _model;
 
         private InputController _inputController;
 
