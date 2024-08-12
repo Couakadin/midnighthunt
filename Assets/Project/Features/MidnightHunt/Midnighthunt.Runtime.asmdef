@@ -3,7 +3,8 @@
     "rootNamespace": "Midnighthunt.Runtime",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
-        "GUID:94229dfd65860a749ada5bee47f2a953"
+        "GUID:94229dfd65860a749ada5bee47f2a953",
+        "GUID:4307f53044263cf4b835bd812fc161a4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

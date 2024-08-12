@@ -2,7 +2,7 @@
     "name": "PlayerController",
     "maps": [
         {
-            "name": "Main",
+            "name": "Player",
             "id": "da42d582-1d27-4898-bd9b-de1edd1cc961",
             "actions": [
                 {
@@ -15,9 +15,27 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Action",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "5d1157e4-12ba-43db-8092-763f8ce1a434",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "56d5e4f3-9716-4a7e-ab62-2a038d2ece7e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "62d611b8-a98f-4f15-9c32-3574cb6fa8fa",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -32,13 +50,13 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Action",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "3D Vector",
-                    "id": "35e6c0e5-edd7-48fa-b11e-28922aee6155",
+                    "name": "WASD",
+                    "id": "f930b1e0-6c83-4802-a333-640e8bffcaa0",
                     "path": "3DVector",
                     "interactions": "",
                     "processors": "",
@@ -48,8 +66,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "53c67bac-6bc9-4207-a279-666af5a7695e",
+                    "name": "Up",
+                    "id": "5b45816f-3440-41e2-994a-9b48ef73ba61",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
@@ -59,8 +77,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "af9ee48b-28a6-4433-9fa9-d128218b8ef5",
+                    "name": "Down",
+                    "id": "5d720af5-6861-444e-b3e8-bdeabbec0fb4",
                     "path": "<Keyboard>/alt",
                     "interactions": "",
                     "processors": "",
@@ -70,8 +88,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "3c2dbfe9-c794-42c8-b5cc-ea212691ab0d",
+                    "name": "Left",
+                    "id": "88c5ce89-7b86-4c26-b0cf-afb5883fcda1",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -81,8 +99,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "7c8b5df0-91ee-4de7-94eb-c4b7eda6e6fc",
+                    "name": "Right",
+                    "id": "b2876cec-e00d-4f8d-bb91-043c2279081c",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
@@ -92,8 +110,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "forward",
-                    "id": "befe103b-fa13-4d38-8b43-0299053185fd",
+                    "name": "Forward",
+                    "id": "98e61f5b-a824-4be5-b727-118e0e56895a",
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
@@ -103,8 +121,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "backward",
-                    "id": "fcc0888e-cfe4-4577-8694-98ffe9bfbd9e",
+                    "name": "Backward",
+                    "id": "dd02bac1-a659-448c-8970-7cd2da78a841",
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
@@ -112,6 +130,28 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "143e20e4-98b7-4cd0-86ac-32d8c6e1ac98",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5ef21081-6e5f-4859-b27b-9000892ffc09",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
