@@ -129,7 +129,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerBlackboard: {fileID: 11400000, guid: 11f2689cf063a9e42abd7e7ed520774c, type: 2}
+  _lanternBlackboard: {fileID: 11400000, guid: 442690553914f5647bbdb6748810692f, type: 2}
   _playerRigidbody: {fileID: 5679575391535025549}
-  _characterController: {fileID: 0}
   _lantern: {fileID: 0}
-  _model: {fileID: 0}
