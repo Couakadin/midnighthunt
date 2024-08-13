@@ -41,7 +41,6 @@ namespace Midnighthunt.Runtime
 
         private void Update()
         {
-            Debug.Log(IsLighting());
             if (IsLighting())
             {
                 _lantern.spotAngle = _lightAngleFocus;
