@@ -46,7 +46,7 @@ MonoBehaviour:
       Data: 2|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
@@ -118,7 +118,7 @@ MonoBehaviour:
       Data: 6|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 0.5
+      Data: 2
     - Name: 
       Entry: 8
       Data: 
@@ -136,7 +136,7 @@ MonoBehaviour:
       Data: 7|System.Int32, mscorlib
     - Name: 
       Entry: 3
-      Data: 0
+      Data: 3
     - Name: 
       Entry: 8
       Data: 
@@ -154,7 +154,7 @@ MonoBehaviour:
       Data: 8|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 8
+      Data: 12
     - Name: 
       Entry: 8
       Data: 
