@@ -1,4 +1,5 @@
 using Data.Runtime;
+using TMPro;
 using UnityEngine;
 
 namespace Midnighthunt.Runtime
