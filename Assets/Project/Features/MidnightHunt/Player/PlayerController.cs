@@ -20,8 +20,10 @@ namespace Midnighthunt.Runtime
 
             Cursor.visible = false;
 
-            if (_playerBlackboard.ContainsKey("PlayerSpeed"))
-                _playerSpeed = _playerBlackboard.GetValue<float>("PlayerSpeed");
+            if (_playerBlackboard.ContainsKey("PlayerSpeedBase"))
+                _playerSpeedBase = _playerBlackboard.GetValue<float>("PlayerSpeedBase");
+            if (_playerBlackboard.ContainsKey("PlayerSpeedFocus"))
+                _playerSpeedFocus = _playerBlackboard.GetValue<float>("PlayerSpeedFocus");
             if (_playerBlackboard.ContainsKey("JumpHeight"))
                 _jumpHeight = _playerBlackboard.GetValue<float>("JumpHeight");
             if (_playerBlackboard.ContainsKey("GravityValue"))
@@ -39,24 +41,25 @@ namespace Midnighthunt.Runtime
                 _lightAngleFocus = _lanternBlackboard.GetValue<float>("LightAngleFocus");
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
+            Vector3 velocity = _camera.transform.forward * GetPlayerMovement().z + _camera.transform.right * GetPlayerMovement().x;
+
             if (IsLighting())
             {
                 _lantern.spotAngle = _lightAngleFocus;
                 _lantern.intensity = _lightIntensityFocus;
+
+                _playerRigidbody.velocity = velocity * _playerSpeedFocus;
             }
             else
             {
                 _lantern.spotAngle = _lightAngleBase;
                 _lantern.intensity = _lightIntensityBase;
-            } 
-        }
+             
+                _playerRigidbody.velocity = velocity * _playerSpeedBase;
+            }
 
-        private void FixedUpdate()
-        {
-            Vector3 velocity = _camera.transform.forward * GetPlayerMovement().z + _camera.transform.right * GetPlayerMovement().x;
-            _playerRigidbody.velocity = velocity * _playerSpeed;
             _playerRigidbody.velocity = new Vector3(_playerRigidbody.velocity.x, 0f, _playerRigidbody.velocity.z);
         }
 
@@ -99,7 +102,8 @@ namespace Midnighthunt.Runtime
         private Camera _camera;
 
         private float _jumpHeight;
-        private float _playerSpeed;
+        private float _playerSpeedBase;
+        private float _playerSpeedFocus;
         private float _gravityValue;
         private float _lightIntensityBase;
         private float _lightAngleBase;

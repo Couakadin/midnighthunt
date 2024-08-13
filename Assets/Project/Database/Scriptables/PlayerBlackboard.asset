@@ -34,19 +34,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: 
     - Name: $k
       Entry: 1
-      Data: PlayerSpeed
+      Data: PlayerSpeedBase
     - Name: $v
       Entry: 7
       Data: 2|System.Single, mscorlib
     - Name: 
       Entry: 4
-      Data: 2
+      Data: 5
     - Name: 
       Entry: 8
       Data: 
@@ -101,6 +101,24 @@ MonoBehaviour:
     - Name: 
       Entry: 4
       Data: -9.81
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PlayerSpeedFocus
+    - Name: $v
+      Entry: 7
+      Data: 6|System.Single, mscorlib
+    - Name: 
+      Entry: 4
+      Data: 0.5
     - Name: 
       Entry: 8
       Data: 
