@@ -58,7 +58,7 @@ namespace Patrol.Runtime
         public void MoveTo(Vector3 destination, float speedFraction)
         {
             _navMeshAgent.destination = destination;
-            _navMeshAgent.speed = _maxSpeed * Mathf.Clamp01(speedFraction);
+            //_navMeshAgent.speed = _maxSpeed * Mathf.Clamp01(speedFraction);
             _navMeshAgent.isStopped = false;
         }
 

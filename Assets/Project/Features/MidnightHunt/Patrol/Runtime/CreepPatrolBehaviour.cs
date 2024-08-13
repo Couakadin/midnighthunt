@@ -13,24 +13,22 @@ namespace Patrol.Runtime
 
         private void Awake()
         {
-            _player = GameObject.FindWithTag("Player");
-            //_fighter = gameObject.GetComponent<Fighter>();
+            _fighterState = GetComponent<CreepAttackBehaviour>();
         }
         private void Start()
         {
+            _playerLayerMask = LayerMask.GetMask("Player");
             _originPosition = transform.position;
         }
 
         private void Update()
         {
-            //if (GetComponent<Health>().IsDead()) { return; }
-            //if (IsInAttackRange() && _fighter.CanAttack(_player))
-            //{
-            //    AttackBehavior();
-            //    _timeSinceLastSawPlayer = 0;
-            //}
-            //else 
-            if (_timeSinceLastSawPlayer <= _suspicionTime)
+            if (IsInChaseRange())
+            {
+                AttackBehavior();
+                _timeSinceLastSawPlayer = 0;
+            }
+            else if (_timeSinceLastSawPlayer <= _suspicionTime)
             {
                 SuspicionBehavior();
             }
@@ -43,19 +41,26 @@ namespace Patrol.Runtime
 
         private void SuspicionBehavior()
         {
-            //GetComponent<ActionScheduler>().CancelCurrentAction();
+            GetComponent<CreepState>().CancelCurrentAction();
             Debug.Log("SuspicionBehavior");
         }
 
-        public bool IsInAttackRange()
+        public bool IsInChaseRange()
         {
-            return Vector3.Distance(transform.position, _player.transform.position) < _chaseDistance;
+            _objectInDetectionRange = Physics.OverlapSphere(transform.position, _chaseDistance, _playerLayerMask);
+            _player = null;
+            foreach (var obj in _objectInDetectionRange)
+            {
+                _player = obj.gameObject;
+            }
+            if(_player != null) return Vector3.Distance(transform.position, _player.transform.position) < _chaseDistance;
+            return false;
         }
         
         private void AttackBehavior()
         {
             Debug.Log("AttackBehavior");
-            //fighter.Attack(player);
+            _fighterState.Attack(_player);
         }
 
         #endregion
@@ -67,17 +72,6 @@ namespace Patrol.Runtime
         {
             _timeSinceLastSawPlayer += Time.deltaTime;
             _timeSinceWaypoint += Time.deltaTime;
-        }
-
-        #endregion
-
-
-        #region Utils
-
-        private void OnDrawGizmosSelected()
-        {
-            Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, _chaseDistance);
         }
 
         private void PatrolBehaviour()
@@ -94,7 +88,7 @@ namespace Patrol.Runtime
             }
             if (_timeSinceWaypoint > _pauseBetweenWaypoint)
             {
-                this.gameObject.GetComponent<CreepMoveBehaviour>().StartMoveAction(nextPosition, _patrolSpeedFraction);
+                GetComponent<CreepMoveBehaviour>().StartMoveAction(nextPosition, _patrolSpeedFraction);
             }
         }
 
@@ -107,13 +101,23 @@ namespace Patrol.Runtime
 
         private Vector3 GetCurrentWaypoint()
         {
-            //Debug.Log($"GetWaypoint: {_patrolWaypointIndex} : {_patrolPath.GetWaypoint(_patrolWaypointIndex)} ");
             return _patrolPath.GetWaypoint(_patrolWaypointIndex);
         }
 
         private void CycleWaypoint()
         {
             _patrolWaypointIndex = _patrolPath.GetNextIndexWaypoint(_patrolWaypointIndex);
+        }
+
+        #endregion
+
+
+        #region Utils
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, _chaseDistance);
         }
 
         #endregion
@@ -128,10 +132,13 @@ namespace Patrol.Runtime
         [SerializeField] float _patrolSpeedFraction = 0.4f;
         [SerializeField] GameObject _player;
         [SerializeField] Patrol _patrolPath;
+        Collider[] _objectInDetectionRange;
         int _patrolWaypointIndex = 0;
+        int _playerLayerMask;
         float _timeSinceLastSawPlayer = Mathf.Infinity;
         float _timeSinceWaypoint = Mathf.Infinity;
         Vector3 _originPosition;
+        CreepAttackBehaviour _fighterState;
 
         #endregion
 
