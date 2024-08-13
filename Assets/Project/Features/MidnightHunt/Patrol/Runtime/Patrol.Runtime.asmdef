@@ -1,7 +1,9 @@
 {
     "name": "Patrol.Runtime",
     "rootNamespace": "Patrol.Runtime",
-    "references": [],
+    "references": [
+        "GUID:94229dfd65860a749ada5bee47f2a953"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

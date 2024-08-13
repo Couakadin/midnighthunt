@@ -1,5 +1,3 @@
-using log4net.Util;
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -53,8 +51,6 @@ namespace Patrol.Runtime
         }
         public void StartMoveAction(Vector3 destination, float speedFraction)
         {
-            //Debug.Log($"Creep Patrol To : {destination}");
-            Debug.Log(gameObject.name);
             GetComponent<CreepState>().StartAction(this);
             MoveTo(destination, speedFraction);
         }
@@ -71,8 +67,6 @@ namespace Patrol.Runtime
             Vector3 veloce = _navMeshAgent.velocity;
             Vector3 localVelocity = transform.InverseTransformDirection(veloce);
             float speed = localVelocity.z;
-            Debug.Log(speed);
-            Debug.Log(_currentLODIndex);
             _currentLodAnimator = _animators[_currentLODIndex];
             _currentLodAnimator.SetFloat("ForwardSpeed", speed);
         }
