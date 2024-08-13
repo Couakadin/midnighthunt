@@ -34,7 +34,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 7
     - Name: 
       Entry: 7
       Data: 
@@ -119,6 +119,42 @@ MonoBehaviour:
     - Name: 
       Entry: 4
       Data: 0.5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PlayerCollectible
+    - Name: $v
+      Entry: 7
+      Data: 7|System.Int32, mscorlib
+    - Name: 
+      Entry: 3
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 1
+      Data: PlayerRun
+    - Name: $v
+      Entry: 7
+      Data: 8|System.Single, mscorlib
+    - Name: 
+      Entry: 4
+      Data: 8
     - Name: 
       Entry: 8
       Data: 
