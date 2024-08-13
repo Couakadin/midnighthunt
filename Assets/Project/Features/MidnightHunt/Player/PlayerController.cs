@@ -30,6 +30,20 @@ namespace Midnighthunt.Runtime
                 _isGroundedPlayer = _playerBlackboard.GetValue<bool>("GroundedPlayer");
         }
 
+        private void Update()
+        {
+            if (Input.GetMouseButton(1))
+            {
+                _lantern.spotAngle = 40f;
+                _lantern.intensity = 30f;
+            }
+            else
+            {
+                _lantern.spotAngle = 80f;
+                _lantern.intensity = 10f;
+            }
+        }
+
         private void FixedUpdate()
         {
             Vector3 velocity = _camera.transform.forward * GetPlayerMovement().z + _camera.transform.right * GetPlayerMovement().x;
