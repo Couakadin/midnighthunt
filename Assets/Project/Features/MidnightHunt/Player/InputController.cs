@@ -48,6 +48,15 @@ namespace Midnighthunt.Runtime
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Light"",
+                    ""type"": ""Button"",
+                    ""id"": ""18034df7-1d33-4558-9c41-6880bb6e4d4c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Look"",
                     ""type"": ""Value"",
                     ""id"": ""56d5e4f3-9716-4a7e-ab62-2a038d2ece7e"",
@@ -176,6 +185,17 @@ namespace Midnighthunt.Runtime
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c4307348-4663-4967-ac0a-1695f981fcd4"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -186,6 +206,7 @@ namespace Midnighthunt.Runtime
             m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
             m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
             m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+            m_Player_Light = m_Player.FindAction("Light", throwIfNotFound: true);
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         }
@@ -251,6 +272,7 @@ namespace Midnighthunt.Runtime
         private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
         private readonly InputAction m_Player_Move;
         private readonly InputAction m_Player_Attack;
+        private readonly InputAction m_Player_Light;
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_Jump;
         public struct PlayerActions
@@ -259,6 +281,7 @@ namespace Midnighthunt.Runtime
             public PlayerActions(@InputController wrapper) { m_Wrapper = wrapper; }
             public InputAction @Move => m_Wrapper.m_Player_Move;
             public InputAction @Attack => m_Wrapper.m_Player_Attack;
+            public InputAction @Light => m_Wrapper.m_Player_Light;
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -276,6 +299,9 @@ namespace Midnighthunt.Runtime
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Light.started += instance.OnLight;
+                @Light.performed += instance.OnLight;
+                @Light.canceled += instance.OnLight;
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
@@ -292,6 +318,9 @@ namespace Midnighthunt.Runtime
                 @Attack.started -= instance.OnAttack;
                 @Attack.performed -= instance.OnAttack;
                 @Attack.canceled -= instance.OnAttack;
+                @Light.started -= instance.OnLight;
+                @Light.performed -= instance.OnLight;
+                @Light.canceled -= instance.OnLight;
                 @Look.started -= instance.OnLook;
                 @Look.performed -= instance.OnLook;
                 @Look.canceled -= instance.OnLook;
@@ -319,6 +348,7 @@ namespace Midnighthunt.Runtime
         {
             void OnMove(InputAction.CallbackContext context);
             void OnAttack(InputAction.CallbackContext context);
+            void OnLight(InputAction.CallbackContext context);
             void OnLook(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
         }
