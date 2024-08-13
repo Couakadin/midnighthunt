@@ -24,12 +24,8 @@ namespace Midnighthunt.Runtime
                 _playerSpeedBase = _playerBlackboard.GetValue<float>("PlayerSpeedBase");
             if (_playerBlackboard.ContainsKey("PlayerSpeedFocus"))
                 _playerSpeedFocus = _playerBlackboard.GetValue<float>("PlayerSpeedFocus");
-            if (_playerBlackboard.ContainsKey("JumpHeight"))
-                _jumpHeight = _playerBlackboard.GetValue<float>("JumpHeight");
-            if (_playerBlackboard.ContainsKey("GravityValue"))
-                _gravityValue = _playerBlackboard.GetValue<float>("GravityValue");
-            if (_playerBlackboard.ContainsKey("GroundedPlayer"))
-                _isGroundedPlayer = _playerBlackboard.GetValue<bool>("GroundedPlayer");
+            if (_playerBlackboard.ContainsKey("PlayerRun"))
+                _playerRun = _playerBlackboard.GetValue<float>("PlayerRun");
 
             if (_lanternBlackboard.ContainsKey("LightIntensityBase"))
                 _lightIntensityBase = _lanternBlackboard.GetValue<float>("LightIntensityBase");
@@ -57,7 +53,10 @@ namespace Midnighthunt.Runtime
                 _lantern.spotAngle = _lightAngleBase;
                 _lantern.intensity = _lightIntensityBase;
              
-                _playerRigidbody.velocity = velocity * _playerSpeedBase;
+                if (IsRunning())
+                    _playerRigidbody.velocity = velocity * _playerRun;
+                else
+                    _playerRigidbody.velocity = velocity * _playerSpeedBase;
             }
 
             _playerRigidbody.velocity = new Vector3(_playerRigidbody.velocity.x, 0f, _playerRigidbody.velocity.z);
@@ -67,6 +66,12 @@ namespace Midnighthunt.Runtime
 
         private void OnDisable() => _inputController.Disable();
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                _playerBlackboard.SetValue<bool>("GroundedPlayer", true);
+        }
+
         #endregion
 
         #region Methods
@@ -75,9 +80,9 @@ namespace Midnighthunt.Runtime
         
         public Vector3 GetMouseDelta() => _inputController.Player.Look.ReadValue<Vector3>();
 
-        public bool IsJumping() => _inputController.Player.Jump.triggered;
+        public bool IsLighting() => _inputController.Player.Light.IsPressed();
 
-        public bool IsLighting() => _inputController.Player.Light.IsPressed(); 
+        public bool IsRunning() => _inputController.Player.Run.IsPressed();
 
         #endregion
 
@@ -101,16 +106,14 @@ namespace Midnighthunt.Runtime
 
         private Camera _camera;
 
-        private float _jumpHeight;
         private float _playerSpeedBase;
         private float _playerSpeedFocus;
-        private float _gravityValue;
+        private float _playerRun;
+
         private float _lightIntensityBase;
         private float _lightAngleBase;
         private float _lightIntensityFocus;
         private float _lightAngleFocus;
-
-        private bool _isGroundedPlayer;
 
         #endregion
     }
