@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Project/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
+guid: b599bbc51e182e44da297f4fe89fa7d7
+========
 guid: 722baf4b89ea4b84aaf97281c3f15d02
 folderAsset: yes
+>>>>>>>> develop:Assets/Project/GraphicTiers/Skybox.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
