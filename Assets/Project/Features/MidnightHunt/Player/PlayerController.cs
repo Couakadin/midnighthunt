@@ -84,6 +84,8 @@ namespace Midnighthunt.Runtime
 
         public bool IsRunning() => _inputController.Player.Run.IsPressed();
 
+        public InputController GetInputController() => _inputController;
+
         #endregion
 
         #region Utils
