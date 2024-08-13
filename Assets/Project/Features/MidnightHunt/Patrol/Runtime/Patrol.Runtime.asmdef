@@ -1,0 +1,16 @@
+{
+    "name": "Patrol.Runtime",
+    "rootNamespace": "Patrol.Runtime",
+    "references": [
+        "GUID:94229dfd65860a749ada5bee47f2a953"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
