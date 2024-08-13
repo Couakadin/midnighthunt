@@ -34,31 +34,37 @@ namespace Midnighthunt.Runtime
             if (_lanternBlackboard.ContainsKey("LightIntensityFocus"))
                 _lightIntensityFocus = _lanternBlackboard.GetValue<float>("LightIntensityFocus");
             if (_lanternBlackboard.ContainsKey("LightIntensityFocus"))
-                _lightAngleFocus = _lanternBlackboard.GetValue<float>("LightAngleFocus");
+                _lightAngleFocus = _lanternBlackboard.GetValue<float>("LightAngleFocus");                     
+            if (_lanternBlackboard.ContainsKey("ClassicLightColor"))
+                _classicLightColor = _lanternBlackboard.GetValue<Color>("ClassicLightColor");
+            if (_lanternBlackboard.ContainsKey("DangerLightColor"))
+                _dangerLightColor = _lanternBlackboard.GetValue<Color>("DangerLightColor");
         }
 
         private void FixedUpdate()
         {
             Vector3 velocity = _camera.transform.forward * GetPlayerMovement().z + _camera.transform.right * GetPlayerMovement().x;
-
+            if (_lanternBlackboard.ContainsKey("IsInDangerZone"))
+                _isInDangerZone = _lanternBlackboard.GetValue<bool>("IsInDangerZone");
+            if (_isInDangerZone) 
+                _lantern.color = _dangerLightColor;
+            else 
+                _lantern.color = _classicLightColor;
             if (IsLighting())
             {
                 _lantern.spotAngle = _lightAngleFocus;
                 _lantern.intensity = _lightIntensityFocus;
-
                 _playerRigidbody.velocity = velocity * _playerSpeedFocus;
             }
             else
             {
                 _lantern.spotAngle = _lightAngleBase;
-                _lantern.intensity = _lightIntensityBase;
-             
+                _lantern.intensity = _lightIntensityBase;        
                 if (IsRunning())
                     _playerRigidbody.velocity = velocity * _playerRun;
                 else
                     _playerRigidbody.velocity = velocity * _playerSpeedBase;
             }
-
             _playerRigidbody.velocity = new Vector3(_playerRigidbody.velocity.x, 0f, _playerRigidbody.velocity.z);
         }
 
@@ -105,6 +111,10 @@ namespace Midnighthunt.Runtime
         private InputController _inputController;
 
         private Camera _camera;
+
+        private bool _isInDangerZone;
+        private Color _classicLightColor;
+        private Color _dangerLightColor;
 
         private float _playerSpeedBase;
         private float _playerSpeedFocus;

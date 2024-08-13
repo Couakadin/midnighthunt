@@ -36,6 +36,7 @@ namespace Patrol.Runtime
             {
                 PatrolBehaviour();
             }
+            _lightBlackboard.SetValue<bool>("IsInDangerZone", IsInChaseRange());
             UpdateTimers();
         }
 
@@ -61,6 +62,7 @@ namespace Patrol.Runtime
         {
             Debug.Log("AttackBehavior");
             _fighterState.Attack(_player);
+
         }
 
         #endregion
@@ -132,6 +134,7 @@ namespace Patrol.Runtime
         [SerializeField] float _patrolSpeedFraction = 0.4f;
         [SerializeField] GameObject _player;
         [SerializeField] Patrol _patrolPath;
+        [SerializeField] Data.Runtime.Blackboard _lightBlackboard;
         Collider[] _objectInDetectionRange;
         int _patrolWaypointIndex = 0;
         int _playerLayerMask;
